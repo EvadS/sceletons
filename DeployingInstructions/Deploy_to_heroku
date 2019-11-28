@@ -1,0 +1,78 @@
+Deploying a Spring Boot app on Heroku using Git and Heroku CLI
+
+
+step 1. cli 
+sudo snap install --classic heroku
+
+step 2. create Account 
+
+https://signup.heroku.com/
+
+skiba.eugeniy@gmail.com
+123-seheroku
+-------------------
+
+step 3.
+Login using your email and password
+
+nter your Heroku credentials:
+Email: skiba.eugeniy@gmail.com
+Password: **************
+Logged in as youremail@example.com
+
+step 4 
+Set up Git and create a Heroku app
+Execute the following commands from the root directory of the project to create a local Git repository for the project -
+
+git init
+git add .
+git commit -m "initial commit"
+
+step 5
+Now, create a new heroku app using heroku create command like so -
+
+$ heroku create
+
+. If you want to specify a custom name then you can pass the app name in the heroku create 
+
+heroku create <YOUR_UNIQUE_APP_NAME>
+heroku create spring-boot-evad-first-sample
+eroku apps:rename --app <OLD_NAME> <NEW_NAME>
+
+
+
+step 6 
+git push heroku master
+
+heroku open
+
+You can see the logs of the application anytime by running the following command -
+
+heroku logs --tail
+
+
+Deploying a Spring Boot app on Heroku using Heroku CLI Deploy Plugin
+
+step 1 
+heroku plugins:install heroku-cli-deploy
+
+mvn clean package
+---
+
+heroku create spring-boot-evad-first --no-remote
+----
+
+heroku deploy:jar target/app.jar --app spring-boot-evad-first
+
+--------------
+
+heroku logs --tail --app spring-boot-evad-first
+--
+Procfile to customize the command that is used to run the application
+# Procfile
+web: java $JAVA_OPTS -jar target/app.jar -Dserver.port=$PORT $JAR_OPTS
+
+https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku
+
+
+
